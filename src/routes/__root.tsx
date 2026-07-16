@@ -3,6 +3,7 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
+  useLocation,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Navbar } from "~/components/layout/navbar";
@@ -55,13 +56,16 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin");
+
   return (
     <RootDocument>
-      <Navbar />
-      <main>
+      {!isAdmin && <Navbar />}
+      <main className={isAdmin ? "" : ""}>
         <Outlet />
       </main>
-      <Footer />
+      {!isAdmin && <Footer />}
     </RootDocument>
   );
 }
