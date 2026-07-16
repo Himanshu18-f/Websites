@@ -26,3 +26,12 @@
 @utility text-glow {
   text-shadow: 0 0 20px var(--color-brand-purple), 0 0 40px var(--color-brand-purple-light);
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
